@@ -1,0 +1,15 @@
+development:
+  adapter: 'mysql2'
+  host: "localhost"
+  database: "angular.example.app"
+  username: 'root'
+  password: ''
+  poot: 128
+  encoding: utf8
+ 
+test:
+  adapter: 'sqlite3'
+  database: 'data/test.database.db'
+ 
+production:
+  #nothing

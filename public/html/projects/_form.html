@@ -1,0 +1,41 @@
+<div ng-show="errors" ng-repeat="(field, errs) in errors" class="alert alert-danger">
+   <div ng-repeat="errItem in errs">
+     <strong>{{ field }}</strong> {{ errItem }}
+   </div>
+</div>
+
+<div class="form-group">        
+  <label>Name</label>
+  <input type="text" class="form-control" name="name" required minlength="3" 
+    ng-model="project.name"
+    minlength="3"
+    ng-model-options="{ debounce: 100 }"/>
+  <div ng-messages="projectForm.name.$error" class="help-block" ng-if='projectForm.name.$dirty'>
+    <span class="label label-danger" ng-message="required">name is required</span>
+    <span class="label label-danger" ng-message="minlength">too short</span>
+  </div>
+</div>
+
+<div class="form-group">        
+  <label>Key</label>
+  <input type="text" class="form-control" name="key" required minlength="3" 
+    ng-model="project.key"
+    ng-model-options="{ debounce: 100 }"/>
+  <div ng-messages="projectForm.key.$error" class="help-block" ng-if='projectForm.key.$dirty'>
+    <span class="label label-danger" ng-message="required">key is required</span>
+    <span class="label label-danger" ng-message="minlength">too short</span>
+  </div>
+</div>
+
+<div class="form-group">        
+  <label>Status</label>
+  <select ng-model="project.status" ng-options="status.value as status.name for status in statuses"
+    ng-model="project.status"
+    required
+    class="form-control"></select>
+</div>
+
+<div class="form-group">
+  <input type="submit" value="Save" class="btn btn-primary" ng-disabled="projectForm.$invalid"/>
+  <a href="/projects" class="btn btn-link">Cancel</a>
+</div>

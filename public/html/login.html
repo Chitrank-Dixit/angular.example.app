@@ -1,0 +1,52 @@
+<div class="row">
+  <div class="col-md-4"></div>
+  <div class="col-md-4">
+    <br/>
+    <h3>Login</h3>
+    <form ng-submit="login(loginForm.$valid)" name="loginForm" novalidate>
+      <div class="alert alert-danger" ng-show="error">
+        {{ error }}
+      </div>
+      <div class="form-group">        
+        <label>Email</label>
+        <input type="email" 
+          class="form-control" 
+          name="email" 
+          required
+          minlength="5"
+          ng-model="email"
+          ng-model-options="{ debounce: 100 }"/>
+        <div ng-messages="loginForm.email.$error" class="help-block" 
+          ng-messages-multiple
+          ng-if='loginForm.email.$dirty'>
+          <span class="label label-danger" ng-message="required">email is required</span>
+          <span class="label label-danger" ng-message="email" >wrong email</span>
+          <span class="label label-danger" ng-message="minlength">too short</span>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" 
+          class="form-control" 
+          name="password" 
+          required
+          minlength="3"
+          ng-model="password"
+          ng-model-options="{ debounce: 100 }"/>
+        <div ng-messages="loginForm.password.$error"  class="help-block"
+          ng-messages-multiple
+          ng-if='loginForm.password.$dirty'>
+          <span class="label label-danger" ng-message="required">password is required</span>
+          <span class="label label-danger" ng-message="minlength">too short</span>
+        </div>
+      </div>
+      
+      <div class="form-group">
+          <input type="submit" class="btn btn-primary" 
+            value="Login" ng-disabled="loginForm.$invalid"/>
+          <a href="/register" class="btn btn-link">register</a>
+      </div>
+    </form>
+  <div class="col-md-4"></div>
+</div>

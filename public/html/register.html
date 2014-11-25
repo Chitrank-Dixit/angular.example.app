@@ -1,0 +1,54 @@
+<div class="row">
+  <div class="col-md-4"></div>
+  <div class="col-md-4">
+    <br/>
+    <h3>Register new User</h3>
+    <form ng-submit="register(registerForm.$valid)" name="registerForm" novalidate>
+      <div ng-show="errors" ng-repeat="(field, errs) in errors" class="alert alert-danger">
+         <div ng-repeat="errItem in errs">
+           <strong>{{ field }}</strong> {{ errItem }}
+         </div>
+      </div>
+      <div class="form-group">        
+        <label>Email</label>
+        <input type="email" 
+          class="form-control" 
+          name="email" 
+          required
+          minlength="5"
+          ng-model="email"
+          ng-model-options="{ debounce: 500 }"/>
+        <div ng-messages="registerForm.email.$error" class="help-block" 
+          ng-messages-multiple
+          ng-if='registerForm.email.$dirty'>
+          <span class="label label-danger" ng-message="required">email is required</span>
+          <span class="label label-danger" ng-message="email" >wrong email</span>
+          <span class="label label-danger" ng-message="minlength">too short</span>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" 
+          class="form-control" 
+          name="password" 
+          required
+          minlength="3"
+          ng-model="password"
+          ng-model-options="{ debounce: 500 }"/>
+        <div ng-messages="registerForm.password.$error"  class="help-block"
+          ng-messages-multiple
+          ng-if='registerForm.password.$dirty'>
+          <span class="label label-danger" ng-message="required">password is required</span>
+          <span class="label label-danger" ng-message="minlength">too short</span>
+        </div>
+      </div>
+      
+      <div class="form-group">
+          <input type="submit" class="btn btn-primary" 
+            value="Register"/>
+          <a href="/login" class="btn btn-link">login</a>
+      </div>
+    </form>
+  <div class="col-md-4"></div>
+</div>

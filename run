@@ -1,0 +1,1 @@
+RACK_ENV=development bundle exec thin start -p 4567

@@ -18,7 +18,8 @@ class User < ActiveRecord::Base
   end
   
   def self.get_token
-    rand(36**32).to_s(36)
+    length = 32
+    (36**(length-1) + rand(36**length - 36**(length-1))).to_s(36)
   end
 end
 

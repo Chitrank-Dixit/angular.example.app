@@ -6,13 +6,20 @@ require './lib/models'
 
 set :environment, ENV['RACK_ENV']
 set :show_exceptions, false
+# disable log
+ActiveRecord::Base.logger = nil
 
+# disable warning
+I18n.enforce_available_locales = false
+
+# will rescue all .find requests
 error ActiveRecord::RecordNotFound do
   "Not found: " + env['sinatra.error'].message
 end
 
+# angular pass POST in different way
 def angular_data_params(*list)
-  request.body.rewind # read from beginning of body
+  request.body.rewind
   JSON.parse(request.body.read)
 end
 
@@ -45,7 +52,6 @@ delete '/rest/project_users' do
   project.users.delete(user)
   json({})
 end
-
 # Auth
 post "/rest/users/login" do
   token = User.login(angular_data_params['email'].to_s, angular_data_params['password'].to_s)
@@ -64,8 +70,6 @@ post "/rest/users/register" do
     json({errors: record.errors })
   end
 end
-
-
 # projects
 get "/rest/projects" do
   json Project.all

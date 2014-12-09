@@ -10,3 +10,9 @@ gem 'mysql2'
 gem 'thin'
 gem 'sinatra-activerecord'
 gem "rake"
+
+group :test do
+  gem "factory_girl"
+  gem "rspec"
+  gem "database_cleaner"
+end

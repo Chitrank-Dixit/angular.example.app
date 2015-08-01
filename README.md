@@ -22,3 +22,7 @@ RACK_ENV=development bundle exec thin start -p 4567
 
 RAILS_ENV=test bundle exec rake db:setup --trace
 RAILS_ENV=test bundle exec rspec
+
+# run the app 
+
+./run

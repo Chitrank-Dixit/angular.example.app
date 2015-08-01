@@ -9,10 +9,10 @@ Simple sinatra / angular application.
 
 # Setup
 
-rake -T
+bundle exec rake -T
 
-rake db:create
-rake db:migrate
+bundle exec rake db:create
+bundle exec rake db:migrate
 
 RACK_ENV=test rake db:migrate
 

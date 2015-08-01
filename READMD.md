@@ -13,3 +13,5 @@ If any problem comes just install the gems seperately or move to the suitable ve
 Running the application , Now you can run the application using
 
 $ rackup
+
+# ruby sinatra uses thin server to run the app
